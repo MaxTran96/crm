@@ -9,7 +9,7 @@ test.describe('', () => {
     await page.getByRole('button', { name: 'Continue', exact: true }).click();
     await page.getByPlaceholder('Password').fill('Applecar2025');
     await page.getByRole('button', { name: 'Sign in' }).click();
-    await expect(page.getByText('Welcome to Twenty')).not.toBeVisible();
+    await expect(page.getByText('Welcome to your CRM')).not.toBeVisible();
     expect(page.url()).not.toContain('/welcome');
     await page.getByRole('link', { name: 'Opportunities' }).click();
     await expect(page.locator('tbody > tr')).toHaveCount(4);

@@ -27,7 +27,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: PORT
-              value: 6379
+              value: "6379"
           ports:
             - containerPort: 6379
               name: redis
@@ -39,6 +39,13 @@ spec:
             limits:
               memory: "2048Mi"
               cpu: "500m"
-
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
+#          livenessProbe:
+#            tcpSocket:
+#              port: 6379
+#            initialDelaySeconds: 5
+#            periodSeconds: 10
+#          readinessProbe:
+#            tcpSocket:
+#              port: 6379
+#            initialDelaySeconds: 5
+#            periodSeconds: 10

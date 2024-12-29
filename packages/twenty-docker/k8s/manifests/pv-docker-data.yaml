@@ -9,3 +9,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /data/twentycrm-docker-data
+    type: DirectoryOrCreate
