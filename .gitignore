@@ -40,3 +40,9 @@ dump.rdb
 /devenv.nix
 /flake.lock
 /flake.nix
+
+ca.crt
+ca.key
+
+*.tfstate*
+*.tfstate.backup*

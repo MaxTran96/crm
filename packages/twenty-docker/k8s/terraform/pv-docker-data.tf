@@ -12,7 +12,19 @@ resource "kubernetes_persistent_volume" "docker_data" {
     # https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/persistent_volume
     persistent_volume_source {
       local {
-        path = var.twentycrm_docker_data_pv_path
+        path = var.twentycrm_docker_data_pv_path # Ensure this path exists on the target node
+      }
+    }
+
+    node_affinity {
+      required {
+        node_selector_term {
+          match_expressions {
+            key      = "kubernetes.io/hostname"
+            operator = "In"
+            values   = var.twentycrm_docker_data_pv_hostnames # Replace with the hostname(s) where the volume should be created
+          }
+        }
       }
     }
   }

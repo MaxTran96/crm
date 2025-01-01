@@ -4,6 +4,7 @@ resource "kubernetes_persistent_volume_claim" "server" {
     namespace = kubernetes_namespace.twentycrm.metadata.0.name
   }
   spec {
+    storage_class_name = "default"
     access_modes = ["ReadWriteOnce"]
     resources {
       requests = {

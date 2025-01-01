@@ -28,17 +28,46 @@ spec:
         - name: twentycrm-docker-data
           persistentVolumeClaim:
             claimName: twentycrm-docker-data-pvc
+      initContainers:
+        - name: change-vol-ownership
+          image: ubuntu
+          command: [ "bash", "-c", "chown -R 1000:1000 /app/docker-data /app/packages/twenty-server/.local-storage" ]
+          volumeMounts:
+            - name: twentycrm-docker-data
+              mountPath: /app/docker-data
+            - name: twentycrm-server-data
+              mountPath: /app/packages/twenty-server/.local-storage
+        - name: init-database
+          image: max-crm:latest
+          imagePullPolicy: Never
+          env:
+            - name: PG_DATABASE_URL
+              value: "postgres://postgres:postgres@twentycrm-db.twentycrm.svc.cluster.local:5432/default"
+          command:
+            - yarn
+            - database:init:prod
+        - name: migrate
+          image: max-crm:latest
+          imagePullPolicy: Never
+          env:
+            - name: PG_DATABASE_URL
+              value: "postgres://postgres:postgres@twentycrm-db.twentycrm.svc.cluster.local:5432/default"
+            - name: DISABLE_DB_MIGRATIONS
+              value: "false"
+          command:
+            - yarn
+            - database:migrate:prod
       containers:
         - name: twentycrm
-          image: twentycrm/twenty:latest
-          imagePullPolicy: Always
+          image: max-crm:latest
+          imagePullPolicy: Never
           env:
             - name: PORT
-              value: 3000
+              value: "3000"
             - name: SERVER_URL
-              value: "https://crm.example.com:443"
+              value: "http://localhost:8080"  # need to use a domain with port 443
             - name: "PG_DATABASE_URL"
-              value: "postgres://postgres:postgres@twentycrm-db.twentycrm.svc.cluster.local/default"
+              value: "postgres://postgres:postgres@twentycrm-db.twentycrm.svc.cluster.local:5432/default"
             - name: "REDIS_URL"
               value: "redis://twentycrm-redis.twentycrm.svc.cluster.local:6379"
             - name: SIGN_IN_PREFILLED
@@ -60,6 +89,12 @@ spec:
             - containerPort: 3000
               name: http-tcp
               protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 5
           resources:
             requests:
               memory: "256Mi"

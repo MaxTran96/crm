@@ -36,6 +36,9 @@ resource "kubernetes_deployment" "twentycrm_db" {
           name  = var.twentycrm_app_name
           stdin = true
           tty   = true
+
+          image_pull_policy  = "IfNotPresent"
+
           security_context {
             allow_privilege_escalation = true
           }
@@ -68,6 +71,15 @@ resource "kubernetes_deployment" "twentycrm_db" {
           volume_mount {
             name       = "db-data"
             mount_path = "/bitnami/postgresql"
+          }
+
+          readiness_probe {
+            exec {
+              # "pg_isready" checks if Postgres is ready for connections:
+              command = ["pg_isready", "-U", "postgres", "-h", "127.0.0.1"]
+            }
+            initial_delay_seconds = 10
+            period_seconds        = 5
           }
         }
 
