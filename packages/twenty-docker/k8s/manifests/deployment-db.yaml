@@ -35,6 +35,10 @@ spec:
               value: "postgres"
             - name: PGPASSWORD_SUPERUSER
               value: "postgres"
+            - name: SPILO_PROVIDER
+              value: "local"
+            - name: ALLOW_NOSSL
+              value: "true"
           ports:
             - containerPort: 5432
               name: tcp
