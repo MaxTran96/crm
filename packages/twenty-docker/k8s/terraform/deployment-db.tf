@@ -41,8 +41,28 @@ resource "kubernetes_deployment" "twentycrm_db" {
           }
 
           env {
-            name  = "POSTGRES_PASSWORD"
+            name  = "PGUSER_SUPERUSER"
+            value = "postgres"
+          }
+          env {
+            name  = "PGPASSWORD_SUPERUSER"
             value = var.twentycrm_pgdb_admin_password
+          }
+          env {
+            name  = "ALLOW_NOSSL"
+            value = "true"
+          }
+          env {
+            name  = "SPILO_PROVIDER"
+            value = "local"
+          }
+          env {
+            name  = "PGDATABASE"
+            value = "default"
+          }
+          env {
+            name  = "POSTGRES_DB"
+            value = "default"
           }
           env {
             name  = "BITNAMI_DEBUG"
@@ -67,7 +87,7 @@ resource "kubernetes_deployment" "twentycrm_db" {
 
           volume_mount {
             name       = "db-data"
-            mount_path = "/bitnami/postgresql"
+            mount_path = "/home/postgres/pgdata"
           }
         }
 

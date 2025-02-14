@@ -23,7 +23,7 @@ variable "twentycrm_app_name" {
 
 variable "twentycrm_server_image" {
   type        = string
-  default     = "twentycrm/twenty:latest"
+  default     = "max-crm:latest"
   description = "TwentyCRM server image for the server deployment. This defaults to latest. This value is also used for the workers image."
 }
 
@@ -59,13 +59,13 @@ variable "twentycrm_server_data_mount_path" {
 
 variable "twentycrm_db_pv_path" {
   type        = string
-  default     = ""
+  default     = "/tmp/data/db"
   description = "Local path to use to store the physical volume if using local storage on nodes."
 }
 
 variable "twentycrm_server_pv_path" {
   type        = string
-  default     = ""
+  default     = "/tmp/data/server"
   description = "Local path to use to store the physical volume if using local storage on nodes."
 }
 
@@ -119,7 +119,7 @@ variable "twentycrm_docker_data_mount_path" {
 
 variable "twentycrm_docker_data_pv_path" {
   type        = string
-  default     = ""
+  default     = "/tmp/data/docker-data"
   description = "Local path to use to store the physical volume if using local storage on nodes."
 }
 

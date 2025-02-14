@@ -15,5 +15,16 @@ resource "kubernetes_persistent_volume" "db" {
         path = var.twentycrm_db_pv_path
       }
     }
+    node_affinity {
+      required {
+        node_selector_term {
+          match_expressions {
+            key = "kubernetes.io/hostname"
+            operator = "In"
+            values = ["minikube"]  # Changed from docker-desktop to minikube
+          }
+        }
+      }
+    }
   }
 }
