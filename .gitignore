@@ -43,3 +43,8 @@ dump.rdb
 /flake.nix
 
 .crowdin.yml
+
+packages/twenty-docker/k8s/terraform/.terraform/*
+packages/twenty-docker/k8s/terraform/.terraform.lock.hcl
+packages/twenty-docker/k8s/terraform/terraform.tfstate
+packages/twenty-docker/k8s/terraform/terraform.tfstate.backup
