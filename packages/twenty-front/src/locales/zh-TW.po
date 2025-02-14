@@ -8,8 +8,8 @@ msgstr ""
 "Language: zh\n"
 "Project-Id-Version: cf448e737e0d6d7b78742f963d761c61\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-01-01 00:00
-"
+"PO-Revision-Date: 2025-01-01 00:00\n"
+": \n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -152,7 +152,7 @@ msgstr "添加您的第一個 {objectLabel}"
 msgid "Added {beautifiedCreatedAt}"
 msgstr "已添加 {beautifiedCreatedAt}"
 
-#: src/modules/object-record/object-filter-dropdown/components/AdvancedFilterButton.tsx:132
+#: src/modules/object-record/object-filter-dropdown/components/AdvancedFilterButton.tsx:143
 msgid "Advanced filter"
 msgstr "高級篩選"
 
@@ -515,6 +515,10 @@ msgstr "創建 Webhook"
 msgid "Create your workspace"
 msgstr "創建您的工作區"
 
+#: src/pages/settings/workspace/SettingsCustomDomain.tsx:36
+msgid "Custom Domain"
+msgstr ""
+
 #: src/pages/onboarding/ChooseYourPlan.tsx:90
 msgid "Custom objects"
 msgstr "自定義對象"
@@ -705,9 +709,8 @@ msgid "Display as relative date"
 msgstr "顯示為相對日期"
 
 #: src/pages/settings/SettingsWorkspace.tsx:51
-#: src/pages/settings/workspace/SettingsDomain.tsx:185
-#: src/pages/settings/workspace/SettingsDomain.tsx:195
-#: src/pages/settings/workspace/SettingsCustomDomain.tsx:25
+#: src/pages/settings/workspace/SettingsDomain.tsx:186
+#: src/pages/settings/workspace/SettingsDomain.tsx:196
 msgid "Domain"
 msgstr "域名"
 
@@ -944,7 +947,7 @@ msgstr "功能"
 
 #: src/pages/settings/SettingsWorkspace.tsx:29
 #: src/pages/settings/SettingsWorkspace.tsx:35
-#: src/pages/settings/workspace/SettingsDomain.tsx:192
+#: src/pages/settings/workspace/SettingsDomain.tsx:193
 #: src/modules/settings/components/SettingsNavigationDrawerItems.tsx:143
 msgid "General"
 msgstr "常規"
@@ -1043,7 +1046,7 @@ msgstr "無效的電子郵件"
 msgid "Invalid email or domain"
 msgstr "無效的電子郵件或域名"
 
-#: src/pages/settings/workspace/SettingsDomain.tsx:166
+#: src/pages/settings/workspace/SettingsDomain.tsx:167
 msgid "Invalid form values"
 msgstr "無效的表單值"
 
@@ -1642,11 +1645,15 @@ msgstr "服務器管理面板"
 msgid "Set email visibility, manage your blocklist and more."
 msgstr "設置電子郵件可見性，管理您的屏蔽列表等。"
 
-#: src/pages/settings/workspace/SettingsCustomDomain.tsx:25
-msgid "Set the name of your domain"
-msgstr "設置您的域名"
+#: src/pages/settings/workspace/SettingsCustomDomain.tsx:37
+msgid "Set the name of your custom domain and configure your DNS records."
+msgstr ""
 
-#: src/pages/settings/workspace/SettingsSubdomain.tsx:37
+#: src/pages/settings/workspace/SettingsCustomDomain.tsx:25
+#~ msgid "Set the name of your domain"
+#~ msgstr "設置您的域名"
+
+#: src/pages/settings/workspace/SettingsSubdomain.tsx:40
 msgid "Set the name of your subdomain"
 msgstr "設置您的子域名"
 
@@ -1704,12 +1711,12 @@ msgstr "西班牙語"
 msgid "SSO"
 msgstr "單點登錄"
 
-#: src/pages/settings/workspace/SettingsSubdomain.tsx:36
+#: src/pages/settings/workspace/SettingsSubdomain.tsx:39
 msgid "Subdomain"
 msgstr "子域"
 
-#: src/pages/settings/workspace/SettingsDomain.tsx:111
-#: src/pages/settings/workspace/SettingsDomain.tsx:138
+#: src/pages/settings/workspace/SettingsDomain.tsx:112
+#: src/pages/settings/workspace/SettingsDomain.tsx:139
 msgid "Subdomain already taken"
 msgstr "子域名已被佔用"
 
@@ -1990,7 +1997,7 @@ msgstr "無法測試工作流程"
 #: src/pages/settings/SettingsWorkspace.tsx:32
 #: src/pages/settings/SettingsBilling.tsx:135
 #: src/pages/settings/Releases.tsx:114
-#: src/pages/settings/workspace/SettingsDomain.tsx:188
+#: src/pages/settings/workspace/SettingsDomain.tsx:189
 #: src/pages/settings/security/SettingsSecurity.tsx:37
 #: src/pages/settings/roles/SettingsRoles.tsx:115
 #: src/pages/settings/integrations/SettingsIntegrations.tsx:18
@@ -2055,4 +2062,3 @@ msgstr "您的工作區"
 #: src/pages/settings/SettingsBilling.tsx:172
 msgid "Your workspace will be disabled"
 msgstr "您的工作區將被禁用"
-
