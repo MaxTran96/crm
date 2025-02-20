@@ -23,11 +23,11 @@ spec:
     spec:
       containers:
         - name: twentycrm
-          image: twentycrm/twenty:latest
+          image: max-crm:latest
           imagePullPolicy: Always
           env:
             - name: SERVER_URL
-              value: "https://crm.example.com:443"
+              value: "https://localhost:3000"
             - name: PG_DATABASE_URL
               value: "postgres://postgres:postgres@twentycrm-db.twentycrm.svc.cluster.local/default"
             - name: DISABLE_DB_MIGRATIONS

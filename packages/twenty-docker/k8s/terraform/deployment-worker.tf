@@ -32,20 +32,21 @@ resource "kubernetes_deployment" "twentycrm_worker" {
 
       spec {
         container {
-          image   = var.twentycrm_server_image
-          name    = var.twentycrm_app_name
-          stdin   = true
-          tty     = true
-          command = ["yarn", "worker:prod"]
+          image           = var.twentycrm_server_image
+          name            = var.twentycrm_app_name
+          image_pull_policy = "Never"
+          stdin           = true
+          tty            = true
+          command        = ["yarn", "worker:prod"]
 
           env {
             name  = "SERVER_URL"
-            value = var.twentycrm_app_hostname
+            value = "http://${var.twentycrm_app_hostname}:3000"
           }
 
           env {
             name  = "PG_DATABASE_URL"
-            value = "postgres://twenty:${var.twentycrm_pgdb_admin_password}@${kubernetes_service.twentycrm_db.metadata.0.name}.${kubernetes_namespace.twentycrm.metadata.0.name}.svc.cluster.local/default"
+            value = "postgres://postgres:${var.twentycrm_pgdb_admin_password}@${kubernetes_service.twentycrm_db.metadata.0.name}.${kubernetes_namespace.twentycrm.metadata.0.name}.svc.cluster.local:5432/default"
           }
 
           env {
